@@ -1,0 +1,23 @@
+.TodoItem-selected {
+  text-decoration: line-through;
+  color: lightgrey;
+  font-style: italic;
+}
+
+.TodoItem-label {
+  cursor: pointer;
+}
+
+.TodoItem-remove-button {
+  position: absolute;
+  right: 0;
+  border-radius: 20px;
+  border: 0;
+  background: rgb(221, 155, 155);
+  color: white;
+  cursor: pointer;
+}
+
+.TodoItem-remove-button:hover {
+  color: black;
+}
