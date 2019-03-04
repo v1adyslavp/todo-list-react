@@ -21,10 +21,14 @@ class App extends Component {
     this.setState(prevState => {
       const updatedTodos = prevState.todos.map(todo => {
         if (todo.id === id) {
-          todo.completed = !todo.completed;
+          return {
+            ...todo,
+            completed: !todo.completed
+          }
         }
         return todo;
       });
+
       return {
         ...prevState,
         todos: updatedTodos
@@ -44,8 +48,6 @@ class App extends Component {
   }
 
   handleTaskAdd() {
-    console.log(this.state.inputValue);
-
     this.setState(prevState => {
       let updatedTodos = [...prevState.todos];
 
@@ -54,7 +56,7 @@ class App extends Component {
         const fullIdList = allTodos.map(todo => todo.id);
         const id = Math.max(...fullIdList) + 1;
 
-        updatedTodos.push({
+        updatedTodos.unshift({
           id,
           text: this.state.inputValue,
           completed: false
@@ -72,12 +74,7 @@ class App extends Component {
   handleInputChange(event) {
     let value = event.target.value;
 
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        inputValue: value
-      };
-    });
+    this.setState({ inputValue: value });
   }
 
   handleArchiveClick() {
