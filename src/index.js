@@ -106,64 +106,64 @@ class App extends Component {
   render() {
     const todoItems = this.state.todos.map(item => (
       <TodoItem
-    key={item.id}
-    item={item}
-    handleChange={this.handleChange}
-    handleRemoveTask={this.handleRemoveTask}
-    />
-  ));
+        key={item.id}
+        item={item}
+        handleChange={this.handleChange}
+        handleRemoveTask={this.handleRemoveTask}
+      />
+    ));
 
     return (
       <div>
-      <h3
-    style={{
-      textAlign: "center",
-        color: "lightcoral"
-    }}
-  >
-    To do List
-    </h3>
-    <div className="todo-list">
-      <button
-    className="Todo-btn"
-    onClick={() => this.handleArchiveClick()}
-  >
-    Hide completed
-    </button>
-    <label htmlFor="">
-      <input
-    type="text"
-    value={this.state.inputValue}
-    onChange={event => this.handleInputChange(event)}
-    />
-    <button
-    className="Todo-add-btn Todo-btn"
-    onClick={() => this.handleTaskAdd()}
-  >
-    Add new
-    </button>
-    </label>
+        <h3
+          style={{
+            textAlign: "center",
+              color: "lightcoral"
+          }}
+        >
+          To do List
+        </h3>
+        <div className="todo-list">
+          <button
+            className="Todo-btn"
+            onClick={() => this.handleArchiveClick()}
+          >
+            Hide completed
+          </button>
+          <label>
+            <input
+              type="text"
+              value={this.state.inputValue}
+              onChange={event => this.handleInputChange(event)}
+              onKeyDown={event => event.key === 'Enter' && this.handleTaskAdd()}
+            />
+            <button
+              className="Todo-add-btn Todo-btn"
+              onClick={() => this.handleTaskAdd()}
+            >
+              Add new
+            </button>
+          </label>
 
-    <div className="TodoItems-container">
-    {todoItems.length > 0 ? (
-      todoItems
-    ) : (
-      <span className="Todo-all-done-msg">
-      Well done, no one new task
-    </span>
-  )}
-  </div>
+          <div className="TodoItems-container">
+            {todoItems.length > 0 ? (todoItems)
+              : (
+                  <span className="Todo-all-done-msg">
+                    Well done, no one new task
+                  </span>
+                )}
+          </div>
 
-    {this.state.archievedTodos.length > 0 && (
-    <button
-      className="Todo-btn"
-      onClick={() => this.handleShowAllClick()}
-    >
-      Show archieved
-    </button>
-    )}
-  </div>
-    </div>
+          {this.state.archievedTodos.length > 0 && (
+            <button
+              className="Todo-btn"
+              onClick={() => this.handleShowAllClick()}
+            >
+              Show archieved
+            </button>
+          )}
+        </div>
+      </div>
   );
   }
 }

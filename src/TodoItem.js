@@ -8,7 +8,7 @@ function TodoItem({ item, handleChange, handleRemoveTask }) {
         <input
           type="checkbox"
           checked={item.completed}
-          onClick={() => handleChange(item.id)}
+          onChange={() => handleChange(item.id)}
         />
         <p
           className={item.completed ? "TodoItem-selected TodoItem-label" : "TodoItem-label"}
